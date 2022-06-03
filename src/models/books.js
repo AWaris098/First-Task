@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 const BookSchema = new Schema({
     
-    bookName :{
+    name :{
       type: String,
       required: true,
       validate(value){
@@ -19,7 +19,6 @@ const BookSchema = new Schema({
         type: String,
         required: true,
         minlength :4,
-        maxlength: 10,
         validate(value){
             if(!validator==value){
                 throw new Error('Name is invalid should be minimum 4 character')
@@ -37,6 +36,15 @@ const BookSchema = new Schema({
                 throw new Error('Length of pages minimum 30 pages')
             }
         }
+        },
+        publish:{
+            type : Date,
+            required : true,
+            validate(value){
+                if(!validator== value){
+                    throw new error('Publish date is necessary')
+                }
+            }
         },
     });
   
